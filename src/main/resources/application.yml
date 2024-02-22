@@ -4,7 +4,7 @@ spring:
     username: rita
     password:
   jpa:
-    show-sql?: true
+    show-sql: true
     #hibernate:
     properties:
       hibernate.format.sql: true
@@ -15,4 +15,7 @@ spring:
       settings:
         trace: false
         web-allow-others: false
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
 
