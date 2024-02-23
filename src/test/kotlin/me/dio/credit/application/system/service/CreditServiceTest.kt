@@ -1,4 +1,4 @@
-package me.dio.credit.application.system
+package me.dio.credit.application.system.service
 
 import me.dio.credit.application.system.service.impl.CreditService
 import me.dio.credit.application.system.service.impl.CustomerService

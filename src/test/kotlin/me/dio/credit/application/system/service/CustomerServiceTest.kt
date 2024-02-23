@@ -1,4 +1,4 @@
-package me.dio.credit.application.system
+package me.dio.credit.application.system.service
 
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
@@ -7,7 +7,6 @@ import io.mockk.junit5.MockKExtension
 import io.mockk.just
 import io.mockk.runs
 import io.mockk.verify
-import io.swagger.v3.oas.annotations.extensions.Extension
 import me.dio.credit.application.system.entity.Adress
 import me.dio.credit.application.system.entity.Customer
 import me.dio.credit.application.system.repository.CustomerRepository
@@ -18,7 +17,6 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.test.context.ActiveProfiles
 import java.math.BigDecimal
 import java.util.*
-import kotlin.random.Random
 
 @ActiveProfiles("test")
 @ExtendWith(MockKExtension::class)
