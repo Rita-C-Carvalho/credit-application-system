@@ -6,16 +6,13 @@ import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
-import io.mockk.mockk
 import io.mockk.verify
 import me.dio.credit.application.system.entity.Adress
 import me.dio.credit.application.system.entity.Credit
 import me.dio.credit.application.system.entity.Customer
 import me.dio.credit.application.system.enummeration.Status
 import me.dio.credit.application.system.repository.CreditRepository
-import me.dio.credit.application.system.repository.CustomerRepository
 import org.assertj.core.api.Assertions
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.test.context.ActiveProfiles
@@ -40,7 +37,8 @@ class CreditServiceTest {
     fun `should save credit successfully`() {
         // Given
         val fakeCredit = buildCredit()
-        every { customerService.findByID(fakeCredit.customer?.id!!) } returns fakeCredit.customer!!
+        val mockKAdditionalAnswerScope =
+            every { customerService.findByID(fakeCredit.customer?.id!!) } returns fakeCredit.customer!!
         every { creditRepository.save(any()) } returns fakeCredit
 
         // When
@@ -129,4 +127,4 @@ class CreditServiceTest {
             customer = customer,
             id = id
         )
-}}
+    }}

@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull
 import me.dio.credit.application.system.entity.Customer
 import java.math.BigDecimal
 
-data class CustumerUpdateDto (
+data class CustomerUpdateDto (
         @field:NotEmpty(message = "Campo não pode ser vazio")
         val firstName: String,
 

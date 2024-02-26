@@ -3,13 +3,11 @@ package me.dio.credit.application.system.repository
 import me.dio.credit.application.system.entity.Adress
 import me.dio.credit.application.system.entity.Credit
 import me.dio.credit.application.system.entity.Customer
-import me.dio.credit.application.system.enummeration.Status
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
-import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureTestEntityManager
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
 import org.springframework.test.context.ActiveProfiles

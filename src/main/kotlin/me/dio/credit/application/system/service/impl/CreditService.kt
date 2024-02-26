@@ -8,8 +8,8 @@ import java.util.*
 
 @Service
 class CreditService(
-        private val creditRepository: CreditRepository,
-        private val custumerService: CustomerService
+    private val creditRepository: CreditRepository,
+    private val custumerService: CustomerService
 ): ICreditService {
 
     //FUNÇÃO PARA CADASTRAR CREDITOS
@@ -25,12 +25,12 @@ class CreditService(
 
     //FUNCÇÃO PARA LISTAR CREDITOS POR CUSTOMER(CLIENTE)
     override fun findAllByCustomer(customerId: Long): List<Credit> =
-            this.creditRepository.findAllByCustomer(customerId)
+        this.creditRepository.findAllByCustomer(customerId)
 
     //FUNÇÃO PARA LISTAR CREDITOS PELO CÓDIGO
     override fun findByCreditCode(customerId: Long, creditCode: UUID): Credit {
-       val credit: Credit = (this.creditRepository.findByCreditCode(creditCode)
-               ?: throw RuntimeException("Creditcode $creditCode not fond"))
+        val credit: Credit = (this.creditRepository.findByCreditCode(creditCode)
+            ?: throw RuntimeException("Creditcode $creditCode not fond"))
         return if (credit.customer?.id == customerId) credit else throw RuntimeException("Contact admin")
     }
 }

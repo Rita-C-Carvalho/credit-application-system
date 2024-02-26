@@ -3,7 +3,7 @@ package me.dio.credit.application.system.controller
 import jakarta.validation.Valid
 import me.dio.credit.application.system.dto.CustomerDto
 import me.dio.credit.application.system.dto.CustomerView
-import me.dio.credit.application.system.dto.CustumerUpdateDto
+import me.dio.credit.application.system.dto.CustomerUpdateDto
 import me.dio.credit.application.system.entity.Customer
 import me.dio.credit.application.system.service.impl.CustomerService
 import org.springframework.http.HttpStatus
@@ -26,9 +26,9 @@ class CustomerController (
     //MÉTODO PARA CADASTRAR CUSTOMERS
 
     @PostMapping
-    fun saveCustomer(@RequestBody @Valid customerDto: CustomerDto): ResponseEntity<String>{
-       val savedCustomer = this.customerService.save(customerDto.toEntity())
-        return ResponseEntity.status(HttpStatus.CREATED).body("Customer ${savedCustomer.email} saved!")
+    fun saveCustomer(@RequestBody @Valid customerDto: CustomerDto): ResponseEntity<CustomerView>{
+       val savedCustomer: Customer = this.customerService.save(customerDto.toEntity())
+        return ResponseEntity.status(HttpStatus.CREATED).body(CustomerView(savedCustomer))
     }
 
 
@@ -48,7 +48,7 @@ class CustomerController (
     //O @PatchMapping serve para quand queremos atualizar poucos dados, quando queremos fazer a alteração completa, usa-se o @PutMapping
     @PatchMapping
     fun updateCustumer(@RequestParam(value = "customerId") id: Long,
-                       @RequestBody @Valid customerUpdateDto: CustumerUpdateDto) : ResponseEntity<CustomerView>{
+                       @RequestBody @Valid customerUpdateDto: CustomerUpdateDto) : ResponseEntity<CustomerView>{
 
         val customer: Customer = this.customerService.findByID(id)
         val customerToUpdate: Customer = customerUpdateDto.toEntity(customer)
